@@ -49,9 +49,10 @@
     "@tarojs/runtime": "3.6.2",
     "@tarojs/shared": "3.6.2",
     "@tarojs/taro": "3.6.2",
-    "timeago.js": "^4.0.2",
+    "timeago.js": "^3.0.2",
     "vue": "^2.5.0",
-    "vue-template-compiler": "^2.5.0"
+    "vue-template-compiler": "^2.5.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

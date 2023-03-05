@@ -28,11 +28,11 @@ function getNodeInfo () {
 }
 
 function getHotNodes () {
-  return DOMAIN + Endpoint.hot_topic
+  return DOMAIN + Endpoint.hot_topic;
 }
 
 function getLatestTopic () {
-  return DOMAIN + Endpoint.latest_topic
+  return DOMAIN + Endpoint.latest_topic;
 }
 
 function getReplies (topic_id) {

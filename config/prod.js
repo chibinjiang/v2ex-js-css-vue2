@@ -4,7 +4,11 @@ module.exports = {
   },
   defineConstants: {
   },
-  mini: {},
+  mini: {
+    prerender: {  // 在 Taro CLI 直接将要渲染的页面转换为 wxml 字符串
+      include: ['pages/nodes/nodes'], // `pages/nodes/nodes` 也会参与 prerender
+    }
+  },
   h5: {
     /**
      * WebpackChain 插件配置
