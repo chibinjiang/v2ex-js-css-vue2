@@ -330,7 +330,7 @@
   resolved "https://repo.huaweicloud.com/repository/npm/@babel/parser/-/parser-7.16.4.tgz#d5f92f57cf2c74ffe9b37981c0e72fee7311372e"
   integrity sha512-6V0qdPUaiVHH3RtZeLIsc+6pDhbYzHR8ogA8w+f+Wc77DuXto19g2QUwveINoS34Uw+W8/hQDGJCx+i4n7xcng==
 
-"@babel/parser@^7.14.5", "@babel/parser@^7.16.4", "@babel/parser@^7.18.4", "@babel/parser@^7.20.7", "@babel/parser@^7.21.0", "@babel/parser@^7.21.2":
+"@babel/parser@^7.14.5", "@babel/parser@^7.16.4", "@babel/parser@^7.18.4", "@babel/parser@^7.20.0", "@babel/parser@^7.20.7", "@babel/parser@^7.21.0", "@babel/parser@^7.21.2":
   version "7.21.2"
   resolved "https://repo.huaweicloud.com/repository/npm/@babel/parser/-/parser-7.21.2.tgz#dacafadfc6d7654c3051a66d6fe55b6cb2f2a0b3"
   integrity sha512-URpaIJQwEkEC2T9Kn+Ai6Xe/02iNaVCuT/PtoRz3GPVJVDpPd7mLo+VddTbhCRU9TXqW5mSrQfXZyi8kDKOVpQ==
@@ -1336,6 +1336,19 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@nutui/icons-vue-taro@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.npmmirror.com/@nutui/icons-vue-taro/-/icons-vue-taro-0.0.9.tgz#b5223eb01e2b987fdbe460e5d0439a66481e54f1"
+  integrity sha512-10VYAtFC+o1X0anGs+y2PgF1NWMeLFz2JVMRw4BWLg6wbtVbYy9wukLxyGhZC6Yf6t39DcwaGVda8paV7K6/Ew==
+
+"@nutui/nutui-taro@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.npmmirror.com/@nutui/nutui-taro/-/nutui-taro-4.0.2.tgz#73790325b6afaa806b454bde1bae2c02ce985134"
+  integrity sha512-Y8MJ1F4heyKoiJh3GspZdKIILFmCsC8zvRO2YUMbw498rxnP6v0SXbSc8sgIYobwj+TQmYVnLql9Fno0TVnPPQ==
+  dependencies:
+    "@nutui/icons-vue-taro" "^0.0.9"
+    sass "^1.50.0"
+
 "@parcel/css@^1.4.0":
   version "1.14.0"
   resolved "https://repo.huaweicloud.com/repository/npm/@parcel/css/-/css-1.14.0.tgz#233750a1e3648b3746f27c2d8f3fd85a2290e512"
@@ -1590,6 +1603,16 @@
     "@tarojs/service" "3.6.2"
     "@tarojs/shared" "3.6.2"
     lodash "^4.17.21"
+
+"@tarojs/plugin-html@^3.6.2":
+  version "3.6.2"
+  resolved "https://registry.npmmirror.com/@tarojs/plugin-html/-/plugin-html-3.6.2.tgz#4624e8cda76cddbc6c87cad3c8b8aeb6e52057a8"
+  integrity sha512-c/NST8DE4Iv4LRTIGcaes0qIS2cXOponSdvnq39NDCHdOaMRJDMZXlXofSUiSzDpJX0IiPqY+BKcPquMa9u4tg==
+  dependencies:
+    "@babel/parser" "^7.20.0"
+    "@tarojs/runtime" "3.6.2"
+    "@tarojs/service" "3.6.2"
+    "@tarojs/shared" "3.6.2"
 
 "@tarojs/plugin-platform-alipay@3.6.2":
   version "3.6.2"
@@ -10050,7 +10073,7 @@ sass-loader@12.4.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@*, sass@^1.23.7, sass@^1.29.0:
+sass@*, sass@^1.23.7, sass@^1.29.0, sass@^1.50.0:
   version "1.58.3"
   resolved "https://repo.huaweicloud.com/repository/npm/sass/-/sass-1.58.3.tgz#2348cc052061ba4f00243a208b09c40e031f270d"
   integrity sha512-Q7RaEtYf6BflYrQ+buPudKR26/lH+10EmO9bBqbmPh/KeLqv8bjpTNqxe71ocONqXq+jYiCbpPUmQMS+JJPk4A==

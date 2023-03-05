@@ -1,37 +1,22 @@
 <template>
-  <view class='detail'>
-    <thread
-      :node="topic.node"
-      :title="topic.title"
-      :last_modified="topic.last_modified"
-      :replies="topic.replies"
-      :tid="topic.id"
-      :member="topic.member"
-      :not_navi="true"
-    />
+  <view>
     <loading v-if="loading" />
     <view v-else>
-      <view class='main-content'>
-        <rich-text :nodes="content | html" />
-<!--        <view v-html="content | html" />-->
-      </view>
-      <view class='replies'>
-        <view v-for="(reply, index) in replies" class='reply' :key="reply.id">
-          <image :src='reply.member.avatar_large' class='avatar' />
-          <view class='main'>
-            <view class='author'>
-              {{reply.member.username}}
-            </view>
-            <view class='time'>
-              {{reply.last_modified | time}}
-            </view>
-            <rich-text :nodes="reply.content_rendered | html" class='content' />
-<!--            <view v-html="reply.content_rendered | html" class='content' />-->
-            <view class='floor'>{{index + 1}} 楼</view>
+      <view class="info">
+        <view>
+          <image :src="nodeInfo.avatar_large" class="avatar"></image>
+        </view>
+        <view class="middle">
+          <view class="bold"> {{ nodeInfo.title }}</view>
+          <view class="numbers">
+            <text class="mr10"> 主题: {{ nodeInfo.topics }} </text>
+            <text>Stars: {{ nodeInfo.stars }}</text>
           </view>
         </view>
       </view>
+      <text class="title"> {{ nodeInfo.header || '-' }} </text>
     </view>
+    <thread-list :threads="threads" :loading="loading" style="margin-left: 20px"/>
   </view>
 </template>
 
@@ -39,53 +24,36 @@
 import Vue from 'vue'
 import Taro from '@tarojs/taro'
 import api from '../../utils/api'
-import { timeagoInst, GlobalState, prettyHTML } from '../../utils'
-import Thread from '../../components/thread.vue'
 import Loading from '../../components/loading.vue'
+import ThreadList from '../../components/thread_list'
 import './index.css'
 
 export default {
   name: "node_detail",
-  components: {loading: Loading, thread: Thread},
+  components: {loading: Loading, 'thread-list': ThreadList},
   data () {
     return {
-      topic: GlobalState.thread,
-      loading: true, replies: [], content: ''
+      nodeInfo: null,  loading: true, threads: []
     }
   },
   async created () {
+    // 同时请求 threads 和 node detail
     try {
-      const id = GlobalState.thread.tid
-      const [{ data }, { data: [ { content_rendered } ] } ] = await Promise.all([
-        Taro.request({
-          url: api.getReplies(id)
-        }),
-        Taro.request({
-          url: api.getTopics(id)
-        })
+      const node_id = location.href.split("=")[1].split('&')[0];  // change to this.$route.query
+      console.log("Created Node detail: ", node_id)
+      // const res = await Taro.request({url: api.getNodeInfo(node_id)})
+      const [node_res, threads_res] = await Promise.all([
+        Taro.request({url: api.getNodeInfo(node_id)}),
+        Taro.request({url: api.getNodeTopics(node_id)})
       ])
+      this.nodeInfo = node_res.data
+      this.threads = threads_res.data
       this.loading = false
-      this.replies = data
-      this.content = content_rendered
     } catch (error) {
       this.loading = false
-      await Taro.showToast({title: '载入远程数据错误'})
+      await Taro.showToast({title: '载入Single Node远程数据错误'})
     }
   },
-  filters: {
-    time (val) {
-      return timeagoInst.format(val * 1000, 'zh')
-    },
-    html (val) {
-      return prettyHTML(val)
-    }
-  },
-  // computed: {
-  //   topic() {
-  //     // 获取当前帖子的数据
-  //     return this.$store.state.thread
-  //   }
-  // }
 }
 </script>
 

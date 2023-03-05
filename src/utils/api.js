@@ -20,11 +20,13 @@ function queryString (obj) {
 }
 
 function getAllNode () {
+  // 获取全部节点
   return DOMAIN + Endpoint.all_node
 }
 
-function getNodeInfo () {
-  return DOMAIN + Endpoint.node_info
+function getNodeInfo (id) {
+  // 获取 节点的信息
+  return DOMAIN + Endpoint.node_info + queryString({id})
 }
 
 function getHotNodes () {
@@ -43,6 +45,11 @@ function getTopics (id) {
   return DOMAIN + Endpoint.get_topics + queryString({id})
 }
 
+
+function getNodeTopics (node_id) {
+  return DOMAIN + Endpoint.get_topics + queryString({node_id})
+}
+
 export default {
   getAllNode,
   getNodeInfo,
@@ -50,5 +57,6 @@ export default {
   getReplies,
   getHotNodes,
   queryString,
-  getTopics
+  getTopics,
+  getNodeTopics
 }

@@ -21,3 +21,12 @@
 
 ### 4. 小程序真机调试request:fail url not in domain list？
 ![image](./src/resource/request:fail_url_not_in_domain_list.png)
+
+### 5. TODO:
+- Node Page and Node Detail Page refactor
+- Use NutUI
+
+
+### 6. Import NutUI
+- https://taro-docs.jd.com/docs/nutui
+- requirement: `yarn add @tarojs/plugin-html @nutui/nutui-taro`

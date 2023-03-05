@@ -1,15 +1,19 @@
 import Vue from 'vue'
 // import VirtualList from '@tarojs/components/virtual-list'
+import { Button } from '@nutui/nutui-taro'
+// 引入所有组件的样式文件
 import Vuex from 'vuex'
+import '@nutui/nutui-taro/dist/style.css'
 import './app.css'
 
-// Vue.use(VirtualList)
+Vue.use(Button)
 
 
 const store = new Vuex.Store({
   state: {thread: {}},
   mutations: {
     setThread: (state, thread) => {
+      console.log("Set Thread: ", state, thread)
       state.thread = {...thread}
     }
   }

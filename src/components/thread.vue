@@ -11,7 +11,7 @@
           <text>评论 {{replies}} </text>
         </view>
       </view>
-      <view class="node">
+      <view class="node" v-if="node">
         <text class="tag"> {{ node.title }} </text>
       </view>
     </view>

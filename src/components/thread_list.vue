@@ -5,7 +5,7 @@
       v-else
       v-for="t in threads"
       :key="t.id"
-      :node="t.node"
+      :node="showNode ? t.node : null"
       :title="t.title"
       :last_modified="t.last_modified"
       :replies="t.replies"
@@ -24,7 +24,7 @@ export default {
   name: "thread_list",
   components: {loading: Loading, thread: Thread},
   props: {
-    threads: {type: Array, default: []}, loading: {type: Boolean, default: true}
+    threads: {type: Array, default: []}, loading: {type: Boolean, default: true}, showNode: true
   }
 }
 </script>

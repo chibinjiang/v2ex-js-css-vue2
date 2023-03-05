@@ -56,6 +56,7 @@ export default {
   async created(){
     try {
       const id = GlobalState.thread.tid
+      // const id = GlobalState.thread.tid || this.topic.tid
       console.log("GlobalState.thread.tid: ", GlobalState.thread.tid)
       const [{data}, {data: [{content_rendered}]}] = await Promise.all([
         Taro.request({url: api.getReplies(id)}),
